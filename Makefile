@@ -9,5 +9,11 @@ migrateup:
 migratedown:
 	migrate -path db/migrations -database "postgresql://root:mypassword@localhost:5432/payd?sslmode=disable" -verbose down
 sqlc:
-	sqlc generate
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc
+	cd common && sqlc generate
+	.PHONY: test
+test:
+	@for module in auth common gateway payments; do \
+		echo "Testing $$module module..."; \
+		go test -v ./$$module/... || exit 1; \
+	done
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc test
