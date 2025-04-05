@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package pb;
+
+import "rpc_initialize_payment.proto";
+import "rpc_update_payment.proto";
+
+option go_package = "github.com/joekingsleyMukundi/backend-intern-assesment/payments/pb"; 
+
+service Auth{
+    rpc InitializePayment (InitializePaymentRequest) returns (InitializePaymentResponse){};
+    rpc UpdatePayment (UpdatePaymentRequest) returns (UpdatePaymentResponse) {}
+}

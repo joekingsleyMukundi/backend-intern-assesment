@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pb;
+
+import "payment.proto";
+
+option go_package = "github.com/joekingsleyMukundi/backend-intern-assesment/payments/pb";
+
+message UpdatePaymentRequest{
+    int64 id = 1;
+    string status = 2;
+}
+
+message UpdatePaymentResponse{
+    Payment payment = 1;
+}
