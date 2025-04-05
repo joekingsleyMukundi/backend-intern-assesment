@@ -6,19 +6,19 @@ import (
 	"os"
 	"testing"
 
+	"github.com/joekingsleyMukundi/backend-intern-assesment/common/util"
 	_ "github.com/lib/pq"
-)
-
-const (
-	dbDriver = "postgres"
-	dbUri    = "postgresql://root:mypassword@localhost:5432/payd?sslmode=disable"
 )
 
 var testQueries *Queries
 var testDb *sql.DB
 
 func TestMain(m *testing.M) {
-	testDb, err := sql.Open(dbDriver, dbUri)
+	config, err := util.LoadConfig("../../")
+	if err != nil {
+		log.Fatal("cannot load config:", err)
+	}
+	testDb, err := sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
 		log.Fatal("ConnectioN error: ", err)
 	}
