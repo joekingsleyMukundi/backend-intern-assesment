@@ -7,7 +7,7 @@ import "rpc_update_payment.proto";
 
 option go_package = "github.com/joekingsleyMukundi/backend-intern-assesment/payments/pb"; 
 
-service Auth{
+service Payments{
     rpc InitializePayment (InitializePaymentRequest) returns (InitializePaymentResponse){};
     rpc UpdatePayment (UpdatePaymentRequest) returns (UpdatePaymentResponse) {}
 }

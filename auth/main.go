@@ -37,7 +37,7 @@ func runGrpcServer(config util.Config, store db.Store) {
 	reflection.Register(grpcserver)
 	listener, err := net.Listen("tcp", config.AuthSeviceGrpcServerAddress)
 	if err != nil {
-		log.Fatal("cannot create listener dur to: ", err)
+		log.Fatal("cannot create listener due  to: ", err)
 	}
 	log.Printf("Start grpc server at %s", listener.Addr().String())
 	err = grpcserver.Serve(listener)

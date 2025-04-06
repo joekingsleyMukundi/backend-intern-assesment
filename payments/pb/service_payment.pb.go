@@ -24,8 +24,8 @@ var File_service_payment_proto protoreflect.FileDescriptor
 
 const file_service_payment_proto_rawDesc = "" +
 	"\n" +
-	"\x15service_payment.proto\x12\x02pb\x1a\x1crpc_initialize_payment.proto\x1a\x18rpc_update_payment.proto2\xa2\x01\n" +
-	"\x04Auth\x12R\n" +
+	"\x15service_payment.proto\x12\x02pb\x1a\x1crpc_initialize_payment.proto\x1a\x18rpc_update_payment.proto2\xa6\x01\n" +
+	"\bPayments\x12R\n" +
 	"\x11InitializePayment\x12\x1c.pb.InitializePaymentRequest\x1a\x1d.pb.InitializePaymentResponse\"\x00\x12F\n" +
 	"\rUpdatePayment\x12\x18.pb.UpdatePaymentRequest\x1a\x19.pb.UpdatePaymentResponse\"\x00BDZBgithub.com/joekingsleyMukundi/backend-intern-assesment/payments/pbb\x06proto3"
 
@@ -36,10 +36,10 @@ var file_service_payment_proto_goTypes = []any{
 	(*UpdatePaymentResponse)(nil),     // 3: pb.UpdatePaymentResponse
 }
 var file_service_payment_proto_depIdxs = []int32{
-	0, // 0: pb.Auth.InitializePayment:input_type -> pb.InitializePaymentRequest
-	1, // 1: pb.Auth.UpdatePayment:input_type -> pb.UpdatePaymentRequest
-	2, // 2: pb.Auth.InitializePayment:output_type -> pb.InitializePaymentResponse
-	3, // 3: pb.Auth.UpdatePayment:output_type -> pb.UpdatePaymentResponse
+	0, // 0: pb.Payments.InitializePayment:input_type -> pb.InitializePaymentRequest
+	1, // 1: pb.Payments.UpdatePayment:input_type -> pb.UpdatePaymentRequest
+	2, // 2: pb.Payments.InitializePayment:output_type -> pb.InitializePaymentResponse
+	3, // 3: pb.Payments.UpdatePayment:output_type -> pb.UpdatePaymentResponse
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
