@@ -6,12 +6,10 @@ import "payment.proto";
 
 option go_package = "github.com/joekingsleyMukundi/backend-intern-assesment/payments/pb";
 
-message InitializePaymentRequest{
-    string phone = 1;
-    int64 amount = 2;
-    string owner = 3;
+message GetPaymentStatusRequest{
+    int64 id = 1;
 }
 
-message InitializePaymentResponse{
+message GetPaymentStatusResponse{
     Payment payment = 1;
 }

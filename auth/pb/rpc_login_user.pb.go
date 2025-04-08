@@ -75,15 +75,12 @@ func (x *LoginUserRequest) GetPassword() string {
 }
 
 type LoginUserResponse struct {
-	state                 protoimpl.MessageState `protogen:"open.v1"`
-	User                  *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
-	SessionId             string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
-	AccessToken           string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	RefreshToken          string                 `protobuf:"bytes,4,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
-	AccessTokenExpiresAt  *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=access_token_expires_at,json=accessTokenExpiresAt,proto3" json:"access_token_expires_at,omitempty"`
-	RefreshTokenExpiresAt *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=refresh_token_expires_at,json=refreshTokenExpiresAt,proto3" json:"refresh_token_expires_at,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	User                 *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	AccessToken          string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	AccessTokenExpiresAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=access_token_expires_at,json=accessTokenExpiresAt,proto3" json:"access_token_expires_at,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
 }
 
 func (x *LoginUserResponse) Reset() {
@@ -123,13 +120,6 @@ func (x *LoginUserResponse) GetUser() *User {
 	return nil
 }
 
-func (x *LoginUserResponse) GetSessionId() string {
-	if x != nil {
-		return x.SessionId
-	}
-	return ""
-}
-
 func (x *LoginUserResponse) GetAccessToken() string {
 	if x != nil {
 		return x.AccessToken
@@ -137,23 +127,9 @@ func (x *LoginUserResponse) GetAccessToken() string {
 	return ""
 }
 
-func (x *LoginUserResponse) GetRefreshToken() string {
-	if x != nil {
-		return x.RefreshToken
-	}
-	return ""
-}
-
 func (x *LoginUserResponse) GetAccessTokenExpiresAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.AccessTokenExpiresAt
-	}
-	return nil
-}
-
-func (x *LoginUserResponse) GetRefreshTokenExpiresAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.RefreshTokenExpiresAt
 	}
 	return nil
 }
@@ -166,15 +142,11 @@ const file_rpc_login_user_proto_rawDesc = "" +
 	"user.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"J\n" +
 	"\x10LoginUserRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"\xc0\x02\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"\xa7\x01\n" +
 	"\x11LoginUserResponse\x12\x1c\n" +
-	"\x04user\x18\x01 \x01(\v2\b.pb.UserR\x04user\x12\x1d\n" +
-	"\n" +
-	"session_id\x18\x02 \x01(\tR\tsessionId\x12!\n" +
-	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x04 \x01(\tR\frefreshToken\x12Q\n" +
-	"\x17access_token_expires_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\x14accessTokenExpiresAt\x12S\n" +
-	"\x18refresh_token_expires_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\x15refreshTokenExpiresAtB@Z>github.com/joekingsleyMukundi/backend-intern-assesment/auth/pbb\x06proto3"
+	"\x04user\x18\x01 \x01(\v2\b.pb.UserR\x04user\x12!\n" +
+	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12Q\n" +
+	"\x17access_token_expires_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\x14accessTokenExpiresAtB@Z>github.com/joekingsleyMukundi/backend-intern-assesment/auth/pbb\x06proto3"
 
 var (
 	file_rpc_login_user_proto_rawDescOnce sync.Once
@@ -198,12 +170,11 @@ var file_rpc_login_user_proto_goTypes = []any{
 var file_rpc_login_user_proto_depIdxs = []int32{
 	2, // 0: pb.LoginUserResponse.user:type_name -> pb.User
 	3, // 1: pb.LoginUserResponse.access_token_expires_at:type_name -> google.protobuf.Timestamp
-	3, // 2: pb.LoginUserResponse.refresh_token_expires_at:type_name -> google.protobuf.Timestamp
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_rpc_login_user_proto_init() }

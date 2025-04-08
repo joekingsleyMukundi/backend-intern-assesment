@@ -24,7 +24,8 @@ const (
 type InitializePaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Phone         string                 `protobuf:"bytes,1,opt,name=phone,proto3" json:"phone,omitempty"`
-	Amount        string                 `protobuf:"bytes,2,opt,name=amount,proto3" json:"amount,omitempty"`
+	Amount        int64                  `protobuf:"varint,2,opt,name=amount,proto3" json:"amount,omitempty"`
+	Owner         string                 `protobuf:"bytes,3,opt,name=owner,proto3" json:"owner,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -66,9 +67,16 @@ func (x *InitializePaymentRequest) GetPhone() string {
 	return ""
 }
 
-func (x *InitializePaymentRequest) GetAmount() string {
+func (x *InitializePaymentRequest) GetAmount() int64 {
 	if x != nil {
 		return x.Amount
+	}
+	return 0
+}
+
+func (x *InitializePaymentRequest) GetOwner() string {
+	if x != nil {
+		return x.Owner
 	}
 	return ""
 }
@@ -121,10 +129,11 @@ var File_rpc_initialize_payment_proto protoreflect.FileDescriptor
 
 const file_rpc_initialize_payment_proto_rawDesc = "" +
 	"\n" +
-	"\x1crpc_initialize_payment.proto\x12\x02pb\x1a\rpayment.proto\"H\n" +
+	"\x1crpc_initialize_payment.proto\x12\x02pb\x1a\rpayment.proto\"^\n" +
 	"\x18InitializePaymentRequest\x12\x14\n" +
 	"\x05phone\x18\x01 \x01(\tR\x05phone\x12\x16\n" +
-	"\x06amount\x18\x02 \x01(\tR\x06amount\"B\n" +
+	"\x06amount\x18\x02 \x01(\x03R\x06amount\x12\x14\n" +
+	"\x05owner\x18\x03 \x01(\tR\x05owner\"B\n" +
 	"\x19InitializePaymentResponse\x12%\n" +
 	"\apayment\x18\x01 \x01(\v2\v.pb.PaymentR\apaymentBDZBgithub.com/joekingsleyMukundi/backend-intern-assesment/payments/pbb\x06proto3"
 

@@ -24,24 +24,29 @@ var File_service_payment_proto protoreflect.FileDescriptor
 
 const file_service_payment_proto_rawDesc = "" +
 	"\n" +
-	"\x15service_payment.proto\x12\x02pb\x1a\x1crpc_initialize_payment.proto\x1a\x18rpc_update_payment.proto2\xa6\x01\n" +
+	"\x15service_payment.proto\x12\x02pb\x1a\x1crpc_initialize_payment.proto\x1a\x18rpc_update_payment.proto\x1a\x15rpc_get_payment.proto2\xf7\x01\n" +
 	"\bPayments\x12R\n" +
 	"\x11InitializePayment\x12\x1c.pb.InitializePaymentRequest\x1a\x1d.pb.InitializePaymentResponse\"\x00\x12F\n" +
-	"\rUpdatePayment\x12\x18.pb.UpdatePaymentRequest\x1a\x19.pb.UpdatePaymentResponse\"\x00BDZBgithub.com/joekingsleyMukundi/backend-intern-assesment/payments/pbb\x06proto3"
+	"\rUpdatePayment\x12\x18.pb.UpdatePaymentRequest\x1a\x19.pb.UpdatePaymentResponse\"\x00\x12O\n" +
+	"\x10GetPaymentstatus\x12\x1b.pb.GetPaymentStatusRequest\x1a\x1c.pb.GetPaymentStatusResponse\"\x00BDZBgithub.com/joekingsleyMukundi/backend-intern-assesment/payments/pbb\x06proto3"
 
 var file_service_payment_proto_goTypes = []any{
 	(*InitializePaymentRequest)(nil),  // 0: pb.InitializePaymentRequest
 	(*UpdatePaymentRequest)(nil),      // 1: pb.UpdatePaymentRequest
-	(*InitializePaymentResponse)(nil), // 2: pb.InitializePaymentResponse
-	(*UpdatePaymentResponse)(nil),     // 3: pb.UpdatePaymentResponse
+	(*GetPaymentStatusRequest)(nil),   // 2: pb.GetPaymentStatusRequest
+	(*InitializePaymentResponse)(nil), // 3: pb.InitializePaymentResponse
+	(*UpdatePaymentResponse)(nil),     // 4: pb.UpdatePaymentResponse
+	(*GetPaymentStatusResponse)(nil),  // 5: pb.GetPaymentStatusResponse
 }
 var file_service_payment_proto_depIdxs = []int32{
 	0, // 0: pb.Payments.InitializePayment:input_type -> pb.InitializePaymentRequest
 	1, // 1: pb.Payments.UpdatePayment:input_type -> pb.UpdatePaymentRequest
-	2, // 2: pb.Payments.InitializePayment:output_type -> pb.InitializePaymentResponse
-	3, // 3: pb.Payments.UpdatePayment:output_type -> pb.UpdatePaymentResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	2, // 2: pb.Payments.GetPaymentstatus:input_type -> pb.GetPaymentStatusRequest
+	3, // 3: pb.Payments.InitializePayment:output_type -> pb.InitializePaymentResponse
+	4, // 4: pb.Payments.UpdatePayment:output_type -> pb.UpdatePaymentResponse
+	5, // 5: pb.Payments.GetPaymentstatus:output_type -> pb.GetPaymentStatusResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -54,6 +59,7 @@ func file_service_payment_proto_init() {
 	}
 	file_rpc_initialize_payment_proto_init()
 	file_rpc_update_payment_proto_init()
+	file_rpc_get_payment_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
