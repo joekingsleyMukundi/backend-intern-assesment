@@ -14,7 +14,7 @@ const TaskInitiatePayment = "task:initiate_payment"
 type PayloadInitiatePayment struct {
 	Username string `json:"username"`
 	Phone    string `json:"phone"`
-	Amount   string `json:"amount"`
+	Amount   int64  `json:"amount"`
 }
 
 func (distributor *RedisTaskDistributer) DistributetaskInitiatePayment(
@@ -33,5 +33,16 @@ func (distributor *RedisTaskDistributer) DistributetaskInitiatePayment(
 	}
 	log.Info().Str("type", task.Type()).Bytes("payload", task.Payload()).
 		Str("queue", info.Queue).Int("max_retry", info.MaxRetry).Msg("enqueued task")
+	return nil
+}
+
+func (r *RedisTaskProccessor) ProssesstaskInitiatePayment(cts context.Context, task *asynq.Task) error {
+	var payload PayloadInitiatePayment
+	err := json.Unmarshal(task.Payload(), &payload)
+	if err != nil {
+		return fmt.Errorf("Failed nmashal: %w", asynq.SkipRetry)
+	}
+	log.Info().Str("type", task.Type()).Bytes("payload", task.Payload()).
+		Msg("proccessed task")
 	return nil
 }

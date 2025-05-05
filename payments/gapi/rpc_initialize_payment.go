@@ -3,10 +3,13 @@ package gapi
 import (
 	"context"
 	"database/sql"
+	"time"
 
+	"github.com/hibiken/asynq"
 	db "github.com/joekingsleyMukundi/backend-intern-assesment/common/db/sqlc"
 	"github.com/joekingsleyMukundi/backend-intern-assesment/payments/mpesa"
 	"github.com/joekingsleyMukundi/backend-intern-assesment/payments/pb"
+	"github.com/joekingsleyMukundi/backend-intern-assesment/payments/worker"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -28,6 +31,20 @@ func (server *Server) InitializePayment(ctx context.Context, req *pb.InitializeP
 	payment, err := server.store.CreatePayment(ctx, arg)
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to create payment record: %v", err)
+	}
+	tPayload := &worker.PayloadInitiatePayment{
+		Username: arg.Owner,
+		Phone:    req.Phone,
+		Amount:   arg.Amount,
+	}
+	opts := []asynq.Option{
+		asynq.MaxRetry(10),
+		asynq.ProcessIn(10 * time.Second),
+		asynq.Queue(worker.QueueCritiacal),
+	}
+	err = server.taskDistributor.DistributetaskInitiatePayment(ctx, tPayload, opts...)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to create  : %v", err)
 	}
 	accessToken, err := mpesa.GetAccessToken()
 	if err != nil {

@@ -15,7 +15,8 @@ test:
 		echo "Testing $$module module..."; \
 		go test -v ./$$module/... || exit 1; \
 	done
-
+redis:
+	docker run --name redis -p 6379:6379 -d redis:7-alpine
 .PHONY: help
 help:
 	@echo "Available commands:"
@@ -60,4 +61,4 @@ run-all:
 			exit 1; \
 		fi; \
 	done
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc test
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc test redis 
